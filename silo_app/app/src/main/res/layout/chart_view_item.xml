@@ -33,7 +33,7 @@
                 android:text="Titler"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.silo.silo_app.RingView

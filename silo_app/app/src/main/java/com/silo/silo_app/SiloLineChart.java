@@ -15,6 +15,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.ChartHighlighter;
 import com.github.mikephil.charting.highlight.Highlight;
@@ -44,9 +45,11 @@ public class SiloLineChart extends SiloChart{
         YAxis y = ((LineChart)chart).getAxisLeft();
         XAxis x = chart.getXAxis();
 
-        x.setValueFormatter(new ValueFormatter() {
+        x.setValueFormatter(new LargeValueFormatter());
+        y.setValueFormatter(new LargeValueFormatter());/*new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
+
                 return value + "";
             }
 
@@ -54,7 +57,7 @@ public class SiloLineChart extends SiloChart{
             public String getPointLabel(Entry entry) {
                 return entry.getX() + "";
             }
-        });
+        });*/
 
         x.setDrawAxisLine(true);
         x.setAxisLineWidth(1);
@@ -74,6 +77,9 @@ public class SiloLineChart extends SiloChart{
         y.setDrawGridLines(false);
 
 
+        y.setLabelCount(6);
+        x.setLabelCount(6);
+
         ((LineChart)chart).setDrawGridBackground(false);
         ((LineChart)chart).setDrawBorders(false);
 
@@ -89,6 +95,8 @@ public class SiloLineChart extends SiloChart{
         dataSet.setDrawFilled(true);
         dataSet.setCubicIntensity(1);
         LineData data = new LineData(dataSet);
+
+        y.setAxisMinimum(data.getYMin());
 
         chart.setData(data);
         chart.animateX(1000, Easing.Linear);

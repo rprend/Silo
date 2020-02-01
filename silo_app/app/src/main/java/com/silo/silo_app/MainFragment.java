@@ -96,7 +96,7 @@ public class MainFragment extends Fragment {
             waterEntry.add(new Entry(i, (float) Math.sin(i/200)));
         }
         List<Entry> powerEntry = new ArrayList<>();
-        for (int i = 0; i < 1200; i++) {
+        for (int i = 0; i < 12; i++) {
             powerEntry.add(new Entry(i, i*i));
         }
         List<Entry> tempEntry = new ArrayList<>();

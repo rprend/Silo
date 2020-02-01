@@ -2,11 +2,9 @@ package com.silo.silo_app
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-
 
 const val TITLE_INTENT = "title_message"
 

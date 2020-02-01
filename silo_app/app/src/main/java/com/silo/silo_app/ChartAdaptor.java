@@ -75,16 +75,17 @@ public class ChartAdaptor extends BaseAdapter {
             List<Entry> envEntry = Arrays.asList(new Entry(eff_ind, 1));
 
             List<Entry> waterEntry = new ArrayList<>();
-            for (int i = 0; i < water.length()/6000; i++) {
+
+            for (int i = 0; i < water.length()/500; i++) {
                 waterEntry.add(new Entry(i, water.getInt(i)));
             }
             List<Entry> powerEntry = new ArrayList<>();
-            for (int i = 0; i < power.length(); i++) {
-                waterEntry.add(new Entry(i, power.getInt(i)));
+            for (int i = 5000; i < 5000 + power.length()/5000; i++) {
+                powerEntry.add(new Entry(i, power.getInt(i)));
             }
             List<Entry> tempEntry = new ArrayList<>();
-            for (int i = 0; i < temp.length(); i++) {
-                waterEntry.add(new Entry(i, power.getInt(i)));
+            for (int i = 14000; i < 14000 + temp.length()/241; i++) {
+                tempEntry.add(new Entry(i, (float) temp.getDouble(i)/1000f));
             }
 
             entries.clear();

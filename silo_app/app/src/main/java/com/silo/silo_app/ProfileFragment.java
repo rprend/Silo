@@ -85,7 +85,7 @@ public class ProfileFragment extends Fragment {
 
         List<Entry> entrie = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
-            entrie.add(new Entry(i, (float) (i*i*(1+Math.abs(Math.sin(i/10f))))));
+            entrie.add(new Entry(i, (float) (i*i*(1+Math.abs(Math.sin(i/10f)))*(Math.random()+2))));
         }
         List<Entry> entrie1 = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
@@ -105,7 +105,7 @@ public class ProfileFragment extends Fragment {
 
 
         try {
-            siloChart.newData(entrie1, "week");
+            siloChart.newData(entrie3, "week");
         } catch (Exception e){
         }
 

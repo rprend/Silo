@@ -63,19 +63,19 @@ public class ChartAdaptor extends BaseAdapter {
     public void makeFromWeb() {
 
         try {
-            JSONObject lay = new JSONObject(loadJSONFromAsset(context));
-            float sus_ind = (float) lay.getDouble("sustainability");
-            float eff_ind = (float) lay.getDouble("efficiency");
+            JSONObject lay = new JSONObject(loadJSONFromAsset(context)).getJSONObject("Layout1");
+            float sus_ind = (float) lay.getDouble("sustainability") / 1000;
+            float eff_ind = (float) lay.getDouble("efficiency") / 1000;
             JSONObject vars = lay.getJSONObject("variables");
             JSONArray water = vars.getJSONArray("water");
             JSONArray power = vars.getJSONArray("water");
-            JSONArray temp = vars.getJSONArray("temperature");
+            JSONArray temp = vars.getJSONArray("water");
 
             List<Entry> susEntry = Arrays.asList(new Entry(sus_ind, 1));
             List<Entry> envEntry = Arrays.asList(new Entry(eff_ind, 1));
 
             List<Entry> waterEntry = new ArrayList<>();
-            for (int i = 0; i < water.length(); i++) {
+            for (int i = 0; i < water.length()/6000; i++) {
                 waterEntry.add(new Entry(i, water.getInt(i)));
             }
             List<Entry> powerEntry = new ArrayList<>();

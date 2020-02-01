@@ -85,10 +85,10 @@ public class ProfileFragment extends Fragment {
 
         List<Entry> entrie = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
-            entrie.add(new Entry(i, i*1.4f));
+            entrie.add(new Entry(i, (float) (i*i*(1+Math.abs(Math.sin(i/10f))))));
         }
         List<Entry> entrie1 = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             entrie1.add(entrie.get(i));
         }
         List<Entry> entrie2 = new ArrayList<>();

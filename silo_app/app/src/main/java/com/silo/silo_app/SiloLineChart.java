@@ -2,6 +2,7 @@ package com.silo.silo_app;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -22,45 +23,25 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import java.util.List;
 
 
-public class SiloLineChart {
+public class SiloLineChart extends SiloChart{
     //private final ViewGroup root;
-    private final Context context;
-    public LineChart chart;
-    private LineDataSet dataSet;
-    private LineData data;
 
-    SiloLineChart(LineChart root, Context context) {
 
+    SiloLineChart(ViewGroup root, Context context) {
+        super(context);
+        chart = new LineChart(context);
+        root.addView(chart);
+        makeChart(chart);
       //  this.root = root;
-        this.context = context;
-        chart = root;
-        chart.setHardwareAccelerationEnabled(true);
+
+        chart.invalidate();
+    }
 
 
-        chart.setBackgroundColor(context.getColor(R.color.graph_back));
-        //Description desc = new Description();
-       // desc.setText(descCont);
-      //  desc.setTextColor(context.);
-       // chart.setPadding(10,10,10,100);
-      //  chart.setDescription(desc);
-        chart.getDescription().setEnabled(false);
-        chart.getLegend().setEnabled(false);
-        chart.setDrawGridBackground(false);
-        chart.setDrawBorders(false);
-        chart.setDrawMarkers(false);
-      //  chart.setMinimumHeight((int) context.getResources().getDimension(R.dimen.graph_height));
-       // chart.setMinimumWidth((int) context.getResources().getDimension(R.dimen.graph_width));
+    public void newData(List<Entry> nData, String title) {
 
-
-        /*chart.setHighlighter(new ChartHighlighter() {
-
-        });
-        */
-        chart.setHighlightPerDragEnabled(true);
-        chart.setHighlightPerTapEnabled(true);
-
-        chart.getAxisRight().setEnabled(false);
-        YAxis y = chart.getAxisLeft();
+        ((LineChart)chart).getAxisRight().setEnabled(false);
+        YAxis y = ((LineChart)chart).getAxisLeft();
         XAxis x = chart.getXAxis();
 
         x.setValueFormatter(new ValueFormatter() {
@@ -80,7 +61,7 @@ public class SiloLineChart {
         y.setDrawAxisLine(true);
         y.setAxisLineWidth(1);
         y.setTextSize(12);//context.getResources().getDimension(R.dimen.graph_axis));
-        x.setTextSize(12);//context.getResources().getDimension(R.dimen.graph_axis));
+        x.setTextSize(10);//context.getResources().getDimension(R.dimen.graph_axis));
         x.setPosition(XAxis.XAxisPosition.BOTTOM);
 
         x.setTextColor(context.getColor(R.color.graph_label));
@@ -92,28 +73,11 @@ public class SiloLineChart {
         x.setDrawGridLines(false);
         y.setDrawGridLines(false);
 
-        //x.setTypeface();
-        //LimitLine ave = new LimitLine() TODO
 
-        /*chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-            @Override
-            public void onValueSelected(Entry e, Highlight h) {
+        ((LineChart)chart).setDrawGridBackground(false);
+        ((LineChart)chart).setDrawBorders(false);
 
-            }
-
-            @Override
-            public void onNothingSelected() {
-
-            }
-        });*/
-
-        chart.invalidate();
-    }
-
-
-    public void newData(List<Entry> nData, String title) {
-
-        dataSet = new LineDataSet(nData, title);
+        LineDataSet dataSet = new LineDataSet(nData, title);
         dataSet.setColor(context.getColor(R.color.graph_line));
         dataSet.setLineWidth(4);
         //dataSet.setDrawCubic()
@@ -124,10 +88,10 @@ public class SiloLineChart {
         dataSet.setFillColor(context.getColor(R.color.green));
         dataSet.setDrawFilled(true);
         dataSet.setCubicIntensity(1);
-        data = new LineData(dataSet);
+        LineData data = new LineData(dataSet);
 
         chart.setData(data);
-        chart.animateX(1000, Easing.EaseInExpo);
+        chart.animateX(1000, Easing.Linear);
         //chart.invalidate();
     }
 

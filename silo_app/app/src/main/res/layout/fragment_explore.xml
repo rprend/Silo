@@ -7,10 +7,41 @@
     android:layout_height="match_parent"
     tools:context=".ExploreFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recycler_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <fragment android:name="com.silo.silo_app.LoginFragment"
+                android:id="@+id/tmp_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"/>
+
+            <fragment android:name="com.silo.silo_app.LoginFragment"
+                android:id="@+id/tmp_fragment2"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"/>
+
+            <fragment android:name="com.silo.silo_app.LoginFragment"
+                android:id="@+id/tmp_fragment3"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"/>
+        </LinearLayout>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

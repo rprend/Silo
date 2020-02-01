@@ -46,11 +46,11 @@ class ExploreFragment : Fragment() {
 
         val view: View = inflater.inflate(R.layout.fragment_explore, container, false)
 
-        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view).apply {
-            setHasFixedSize(true)
-            layoutManager = viewManager
-            adapter = viewAdapter
-        }
+//        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view).apply {
+//            setHasFixedSize(true)
+//            layoutManager = viewManager
+//            adapter = viewAdapter
+//        }
 
         return view
     }

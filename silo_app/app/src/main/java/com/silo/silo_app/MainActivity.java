@@ -3,6 +3,7 @@ package com.silo.silo_app;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final NavController controller = Navigation.findNavController(this, R.id.nav_host_fragment);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         final BottomNavigationView bottomBar = findViewById(R.id.bottom_navigation);
 
         controller.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {

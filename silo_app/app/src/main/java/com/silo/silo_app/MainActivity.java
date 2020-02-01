@@ -1,14 +1,18 @@
 package com.silo.silo_app;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.view.MenuItem;
+import android.view.View;
 
-import com.github.mikephil.charting.data.Entry;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,11 +20,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        List<Entry> entries = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            entries.add(new Entry(i, i*i));
-        }
-        //charts -- mult lines //2560X1312
-        SiloLineChart chart = new SiloLineChart("test", "this is test data", entries, (LinearLayout) findViewById(R.id.graph_root), this);
+
+        final NavController controller = Navigation.findNavController(this, R.id.nav_host_fragment);
+        final BottomNavigationView bottomBar = findViewById(R.id.bottom_navigation);
+
+        controller.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                if (destination.getId() == R.id.loginFragment) {
+                    bottomBar.setVisibility(View.GONE);
+                } else {
+                    bottomBar.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        NavigationUI.setupWithNavController(bottomBar, controller);
+
     }
 }

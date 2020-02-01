@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <dimen name="graph_pad">16dp</dimen>
     <dimen name="graph_height">400dp</dimen>
 
     <dimen name="graph_width">300dp</dimen>
     <dimen name="graph_axis">8sp</dimen>
+
+    <dimen name="toolbarHeight">60dp</dimen>
+    <dimen name="padding_default">10dp</dimen>
+    <dimen name="padding_big">20dp</dimen>
+    <dimen name="indent">40dp</dimen>
+    <dimen name="title_size">30sp</dimen>
+    <dimen name="subheader_size">20sp</dimen>
+    <dimen name="body_size">15sp</dimen>
+    <dimen name="tall_toolbar_height">240dp</dimen>
+    <dimen name="small_card_height">100dp</dimen>
 </resources>
+

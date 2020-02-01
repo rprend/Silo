@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.MaterialComponents.BottomNavigationView.Colored">
+    <item android:id="@+id/exploreFragment"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Explore"/>
+    <item android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Main" />
+    <item android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Profile" />
+</menu>

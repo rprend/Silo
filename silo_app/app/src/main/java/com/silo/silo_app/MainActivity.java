@@ -11,8 +11,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 
+import com.evolve.backdroplibrary.BackdropContainer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,8 +26,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final NavController controller = Navigation.findNavController(this, R.id.nav_host_fragment);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        NavigationView navigationView = findViewById(R.id.navigation);
+        navigationView.setCheckedItem(R.id.all);
+
+        BackdropContainer backdropContainer =(BackdropContainer)findViewById(R.id.backdropcontainer);
+
+        backdropContainer.attachToolbar(toolbar)
+                .dropInterpolator(new AccelerateDecelerateInterpolator())
+                .dropHeight(600)
+                .build();
+
         final BottomNavigationView bottomBar = findViewById(R.id.bottom_navigation);
 
         controller.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {

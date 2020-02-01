@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/all"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Explore"/>
+        <item android:id="@+id/mainFragment"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:checked="true"
+            android:title="Main" />
+        <item android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Profile" />
+    </group>
+
+</menu>

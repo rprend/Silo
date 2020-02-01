@@ -7,10 +7,10 @@
     android:layout_marginTop="@dimen/padding_default"
     android:layout_marginRight="@dimen/padding_default"
 
-    android:background="@color/background_light"
+    android:background="@android:color/white"
     android:orientation="vertical"
     app:cardCornerRadius="10dp"
-    app:cardBackgroundColor="@color/background_light"
+    app:cardBackgroundColor="@android:color/white"
 >
 
     <androidx.constraintlayout.widget.ConstraintLayout

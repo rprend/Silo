@@ -33,13 +33,14 @@ import com.google.android.material.datepicker.MaterialStyledDatePickerDialog;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    NavController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final NavController controller = Navigation.findNavController(this, R.id.nav_host_fragment);
+        controller = Navigation.findNavController(this, R.id.nav_host_fragment);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.calendar) {
-            DialogFragment newFragment = new DatePickerFragment();
+            DialogFragment newFragment = new DatePickerFragment(controller);
             newFragment.show(getSupportFragmentManager(), "datePicker");
 
             return true;

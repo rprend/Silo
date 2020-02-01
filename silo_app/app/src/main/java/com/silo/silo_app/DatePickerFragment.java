@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -39,8 +40,10 @@ public class DatePickerFragment extends DialogFragment
 
     private OnFragmentInteractionListener mListener;
 
-    public DatePickerFragment() {
+    private NavController controller;
+    public DatePickerFragment(NavController controller) {
         // Required empty public constructor
+        this.controller = controller;
     }
 
     @Override
@@ -51,7 +54,14 @@ public class DatePickerFragment extends DialogFragment
         int minute = c.get(Calendar.MINUTE);
 
         // Create a new instance of TimePickerDialog and return it
-        return new DatePickerDialog(getActivity());
+        DatePickerDialog dd = new DatePickerDialog(getActivity());
+        dd.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                controller.navigate(R.id.animateG);
+            }
+        });
+        return dd;
     }
 
     /**
@@ -91,12 +101,15 @@ public class DatePickerFragment extends DialogFragment
 
     @Override
     public void onDetach() {
+        controller.navigate(R.id.animateG);
+
         super.onDetach();
         mListener = null;
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        controller.navigate(R.id.animateG);
 
     }
 

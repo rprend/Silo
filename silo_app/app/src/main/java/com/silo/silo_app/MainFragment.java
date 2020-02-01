@@ -77,6 +77,7 @@ public class MainFragment extends Fragment {
 
     }
 
+    ChartAdaptor adaptor;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -124,7 +125,7 @@ public class MainFragment extends Fragment {
         titles.add("Building Temperature");
         types.add("line");
 
-        ChartAdaptor adaptor = new ChartAdaptor(entries, titles, types, getContext());
+        adaptor = new ChartAdaptor(entries, titles, types, getContext());
         graph_rc.setDividerHeight(0);
         graph_rc.setAdapter(adaptor);
 
@@ -135,6 +136,9 @@ public class MainFragment extends Fragment {
         return view;
     }
 
+    public void animate() {
+        adaptor.notifyDataSetChanged();
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

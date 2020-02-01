@@ -10,8 +10,12 @@
         android:id="@+id/mainFragment"
         android:name="com.silo.silo_app.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
-
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/animateG"
+            app:destination="@id/mainFragment"
+        />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.silo.silo_app.ProfileFragment"

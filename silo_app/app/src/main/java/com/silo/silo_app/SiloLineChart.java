@@ -99,7 +99,7 @@ public class SiloLineChart extends SiloChart{
         y.setAxisMinimum(data.getYMin());
 
         chart.setData(data);
-        chart.animateX(1000, Easing.Linear);
+        chart.animateX(1300, Easing.Linear);
         //chart.invalidate();
     }
 

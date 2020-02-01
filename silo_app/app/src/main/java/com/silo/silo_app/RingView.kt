@@ -41,7 +41,7 @@ class RingView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
             colorAnimator.cancel()
         }
 
-        val duration: Long = 1000
+        val duration: Long = 1300
         val endColor: Object = ArgbEvaluator().evaluate(newEcoVal, redColor, greenColor) as Object
         colorAnimator = ValueAnimator.ofObject(ArgbEvaluator(), redColor, endColor).apply {
             this.duration = duration

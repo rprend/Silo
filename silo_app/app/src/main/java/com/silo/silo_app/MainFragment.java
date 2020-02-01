@@ -72,7 +72,6 @@ public class MainFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
     }
 
     @Override
@@ -107,6 +106,8 @@ public class MainFragment extends Fragment {
         //charts -- mult lines //2560X1312
 
 
+        ringView = view.findViewById(R.id.ring_view);
+        ringView.setEcoValue(0.7f);
         return view;
     }
 

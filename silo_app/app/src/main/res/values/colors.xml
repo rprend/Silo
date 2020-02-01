@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@color/yellow</color>
+    <color name="colorPrimaryDark">@color/yellow</color>
+    <color name="colorAccent">@color/red</color>
 
-    <color name="graph_back">#DCDCDC</color>
-    <color name="graph_label">#992929</color>
-    <color name="graph_line">#999929</color>
 
-    <!--    <color name="graph_back">#00574B</color>-->
 
+    <color name="background_light">#E7EEC8</color>
+    <color name="green">#AEB87F</color>
+    <color name="yellow">#EEB238</color>
+    <color name="red">#F71735</color>
+    <color name="black">#170305</color>
+
+    <color name="graph_back">@color/background_light</color>
+    <color name="graph_label">@color/black</color>
+    <color name="graph_line">@color/yellow</color>
 
 </resources>

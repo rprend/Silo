@@ -23,33 +23,33 @@ import java.util.List;
 
 
 public class SiloLineChart {
-    private final ViewGroup root;
+    //private final ViewGroup root;
     private final Context context;
     public LineChart chart;
     private LineDataSet dataSet;
     private LineData data;
 
-    SiloLineChart(ViewGroup root, Context context) {
+    SiloLineChart(LineChart root, Context context) {
 
-        this.root = root;
+      //  this.root = root;
         this.context = context;
-        chart = new LineChart(context);
+        chart = root;
         chart.setHardwareAccelerationEnabled(true);
-        root.addView(chart);
+
 
         chart.setBackgroundColor(context.getColor(R.color.graph_back));
         //Description desc = new Description();
        // desc.setText(descCont);
       //  desc.setTextColor(context.);
-        chart.setPadding(10,10,10,10);
+       // chart.setPadding(10,10,10,100);
       //  chart.setDescription(desc);
         chart.getDescription().setEnabled(false);
         chart.getLegend().setEnabled(false);
         chart.setDrawGridBackground(false);
         chart.setDrawBorders(false);
         chart.setDrawMarkers(false);
-        chart.setMinimumHeight((int) context.getResources().getDimension(R.dimen.graph_height));
-        chart.setMinimumWidth((int) context.getResources().getDimension(R.dimen.graph_width));
+      //  chart.setMinimumHeight((int) context.getResources().getDimension(R.dimen.graph_height));
+       // chart.setMinimumWidth((int) context.getResources().getDimension(R.dimen.graph_width));
 
 
         /*chart.setHighlighter(new ChartHighlighter() {
@@ -76,17 +76,21 @@ public class SiloLineChart {
         });
 
         x.setDrawAxisLine(true);
-        y.setDrawAxisLine(false);
-
-        y.setTextSize(10);//context.getResources().getDimension(R.dimen.graph_axis));
-        x.setTextSize(10);//context.getResources().getDimension(R.dimen.graph_axis));
+        x.setAxisLineWidth(1);
+        y.setDrawAxisLine(true);
+        y.setAxisLineWidth(1);
+        y.setTextSize(12);//context.getResources().getDimension(R.dimen.graph_axis));
+        x.setTextSize(12);//context.getResources().getDimension(R.dimen.graph_axis));
         x.setPosition(XAxis.XAxisPosition.BOTTOM);
 
         x.setTextColor(context.getColor(R.color.graph_label));
         y.setTextColor(context.getColor(R.color.graph_label));
 
-        x.setAxisLineColor(context.getColor(R.color.graph_line));
-        y.setAxisLineColor(context.getColor(R.color.graph_line));
+        x.setAxisLineColor(context.getColor(R.color.green));
+        y.setAxisLineColor(context.getColor(R.color.green));
+
+        x.setDrawGridLines(false);
+        y.setDrawGridLines(false);
 
         //x.setTypeface();
         //LimitLine ave = new LimitLine() TODO
@@ -110,20 +114,20 @@ public class SiloLineChart {
     public void newData(List<Entry> nData, String title) {
 
         dataSet = new LineDataSet(nData, title);
-        dataSet.setColor(context.getColor(R.color.graph_label));
+        dataSet.setColor(context.getColor(R.color.graph_line));
         dataSet.setLineWidth(4);
         //dataSet.setDrawCubic()
         dataSet.setCircleColor(context.getColor(R.color.graph_line));
         dataSet.setDrawCircles(false);
         dataSet.setDrawValues(false);
         dataSet.setDrawHighlightIndicators(false);
-        dataSet.setFillColor(Color.BLUE);
+        dataSet.setFillColor(context.getColor(R.color.green));
         dataSet.setDrawFilled(true);
         dataSet.setCubicIntensity(1);
         data = new LineData(dataSet);
 
         chart.setData(data);
-        chart.animateXY(500,500, Easing.EaseInBounce);
+        chart.animateX(1000, Easing.EaseInExpo);
         //chart.invalidate();
     }
 

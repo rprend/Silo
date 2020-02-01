@@ -40,17 +40,19 @@ public class ChartAdaptor extends RecyclerView.Adapter<VarViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull VarViewHolder holder, int position) {
+        position -= 1;
+        position = position == -1 ? 0 : position;
         holder.newData(entries.get(position), titles.get(position) );
     }
 
     @Override
     public int getItemViewType(int position) {
-        position = Math.max(position, 1);
+        position = Math.min(position, 1);
         return position;
     }
 
     @Override
     public int getItemCount() {
-        return entries.size();
+        return entries.size()+1;
     }
 }

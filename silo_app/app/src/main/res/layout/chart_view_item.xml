@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/graph_width"
+    android:layout_height="@dimen/graph_height"
+    android:layout_marginLeft="@dimen/padding_default"
+    android:layout_marginTop="@dimen/padding_default"
+    android:layout_marginRight="@dimen/padding_default"
 
-    <TextView
+    android:background="@color/background_light"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/background_light"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/chart_title"
-        android:text="Title"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/padding_default"
+        android:padding="@dimen/padding_default">
+
+        <TextView
+            android:id="@+id/chart_title"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_default"
+            android:textColor="@color/black"
+            android:text="Title" />
+
+        <com.silo.silo_app.RingView
+            android:layout_marginLeft="@dimen/padding_default"
+            android:layout_marginTop="@dimen/padding_default"
+            android:layout_marginRight="@dimen/padding_default"
+            android:layout_marginBottom="@dimen/padding_default"
+            android:id="@+id/ring_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chart_title" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_marginLeft="@dimen/padding_default"
+            android:layout_marginTop="@dimen/padding_default"
+            android:layout_marginRight="@dimen/padding_default"
+            android:layout_marginBottom="@dimen/padding_default"
+
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+
+            android:id="@+id/graph_container"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chart_title"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

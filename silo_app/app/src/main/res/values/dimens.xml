@@ -4,7 +4,7 @@
     <dimen name="graph_pad">16dp</dimen>
     <dimen name="graph_height">400dp</dimen>
 
-    <dimen name="graph_width">300dp</dimen>
+    <dimen name="graph_width">400dp</dimen>
     <dimen name="graph_axis">8sp</dimen>
 
     <dimen name="toolbarHeight">60dp</dimen>

@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,10 @@ public class BarnFragment extends Fragment {
         this.title = title;
     }
 
+    public void addFragment(Fragment frag) {
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -72,7 +77,7 @@ public class BarnFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_barn, container, false);
+        View view = inflater.inflate(R.layout.fragment_nearby, container, false);
         if (title != null) {
             ((TextView) view.findViewById(R.id.title)).setText(title);
         }

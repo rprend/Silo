@@ -18,7 +18,7 @@ class ExploreAdapter (private val dataSet: List<String>):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         val cardView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.explore_card, parent, false) as MaterialCardView
+            .inflate(R.layout.fragment_individual_barn, parent, false) as MaterialCardView
 
         return RecyclerViewHolder(cardView)
     }

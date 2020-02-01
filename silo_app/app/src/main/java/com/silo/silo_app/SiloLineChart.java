@@ -96,7 +96,7 @@ public class SiloLineChart extends SiloChart{
         dataSet.setCubicIntensity(1);
         data = new LineData(dataSet);
 
-        y.setAxisMinimum(data.getYMin());
+        y.setAxisMinimum(0);
 
         chart.setData(data);
         chart.animateX(1300, Easing.Linear);

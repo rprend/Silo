@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.ViewGroup;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
@@ -22,47 +23,30 @@ import java.util.List;
 
 
 public class SiloLineChart {
-    private final String title;
     private final ViewGroup root;
     private final Context context;
-    private List<Entry> inData;
     public LineChart chart;
     private LineDataSet dataSet;
     private LineData data;
 
-    SiloLineChart(String title, String descCont, List<Entry> inData, ViewGroup root, Context context) {
-        this.title = title;
+    SiloLineChart(ViewGroup root, Context context) {
+
         this.root = root;
         this.context = context;
-        this.inData = inData;
         chart = new LineChart(context);
         chart.setHardwareAccelerationEnabled(true);
         root.addView(chart);
 
-        dataSet = new LineDataSet(this.inData, title);
-        dataSet.setColor(context.getColor(R.color.graph_label));
-        dataSet.setLineWidth(4);
-        //dataSet.setDrawCubic()
-        dataSet.setCircleColor(context.getColor(R.color.graph_line));
-        dataSet.setDrawCircles(false);
-        dataSet.setDrawValues(false);
-        dataSet.setDrawHighlightIndicators(false);
-        dataSet.setFillColor(Color.BLUE);
-        dataSet.setDrawFilled(true);
-        dataSet.setCubicIntensity(1);
-        data = new LineData(dataSet);
-
-        chart.setData(data);
         chart.setBackgroundColor(context.getColor(R.color.graph_back));
-        Description desc = new Description();
-        desc.setText(descCont);
+        //Description desc = new Description();
+       // desc.setText(descCont);
       //  desc.setTextColor(context.);
         chart.setPadding(10,10,10,10);
-        chart.setDescription(desc);
+      //  chart.setDescription(desc);
         chart.getDescription().setEnabled(false);
         chart.getLegend().setEnabled(false);
-        chart.setDrawGridBackground(true);
-        chart.setDrawBorders(true);
+        chart.setDrawGridBackground(false);
+        chart.setDrawBorders(false);
         chart.setDrawMarkers(false);
         chart.setMinimumHeight((int) context.getResources().getDimension(R.dimen.graph_height));
         chart.setMinimumWidth((int) context.getResources().getDimension(R.dimen.graph_width));
@@ -123,9 +107,24 @@ public class SiloLineChart {
     }
 
 
+    public void newData(List<Entry> nData, String title) {
 
-    public void addData(List<Entry> data) {
-        this.inData.addAll(data);
+        dataSet = new LineDataSet(nData, title);
+        dataSet.setColor(context.getColor(R.color.graph_label));
+        dataSet.setLineWidth(4);
+        //dataSet.setDrawCubic()
+        dataSet.setCircleColor(context.getColor(R.color.graph_line));
+        dataSet.setDrawCircles(false);
+        dataSet.setDrawValues(false);
+        dataSet.setDrawHighlightIndicators(false);
+        dataSet.setFillColor(Color.BLUE);
+        dataSet.setDrawFilled(true);
+        dataSet.setCubicIntensity(1);
+        data = new LineData(dataSet);
+
+        chart.setData(data);
+        chart.animateXY(500,500, Easing.EaseInBounce);
+        //chart.invalidate();
     }
 
 

@@ -7,11 +7,19 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+
+import com.github.mikephil.charting.data.Entry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -64,6 +72,7 @@ public class MainFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
     }
 
     @Override
@@ -71,6 +80,33 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        RecyclerView graph_rc = view.findViewById(R.id.gragh_recycler);
+
+        List<Entry> entrie1 = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            entrie1.add(new Entry(i, i*i));
+        }
+        List<Entry> entrie2 = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            entrie2.add(new Entry(i, i*i));
+        }List<Entry> entrie3 = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            entrie3.add(new Entry(i, i));
+        }
+        List<List<Entry>> entries = new ArrayList<>();
+        entries.add(entrie1);
+        entries.add(entrie2);
+        entries.add(entrie3);
+        List<String> titles = new ArrayList<>();
+        titles.add("1");
+        titles.add("2");
+        titles.add("3");
+        graph_rc.setLayoutManager(new LinearLayoutManager(getContext()));
+        graph_rc.setAdapter(new ChartAdaptor(entries, titles));
+
+        //charts -- mult lines //2560X1312
+
+
         return view;
     }
 

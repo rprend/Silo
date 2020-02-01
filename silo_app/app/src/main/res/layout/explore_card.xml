@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="@dimen/small_card_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
@@ -26,14 +26,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:transitionName="title"
-            android:text="Title"
+            android:text="Matt's Farm"
             android:paddingLeft="@dimen/padding_default"
             android:id="@+id/title"
             android:layout_toRightOf="@+id/image_bigcard"
             android:textSize="@dimen/subheader_size"/>
 
         <TextView
-            android:id="@+id/time"
+            android:id="@+id/eco_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/padding_big"
@@ -42,20 +42,8 @@
             android:layout_toRightOf="@id/image_bigcard"
             android:textSize="@dimen/body_size"
             android:textStyle="italic"
-            android:text="October 10, 2019 - 7:30 PM"/>
+            android:text="Ecorating: 450 "/>
 
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/padding_big"
-            android:paddingRight="@dimen/padding_big"
-            android:paddingBottom="@dimen/padding_default"
-            android:layout_below="@id/time"
-            android:layout_toRightOf="@id/image_bigcard"
-            android:textSize="@dimen/body_size"
-            android:textStyle="italic"
-            android:text="Foellinger Great Hall"/>
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

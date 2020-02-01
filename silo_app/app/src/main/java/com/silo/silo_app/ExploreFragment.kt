@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -46,11 +47,21 @@ class ExploreFragment : Fragment() {
 
         val view: View = inflater.inflate(R.layout.fragment_explore, container, false)
 
-        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view).apply {
-            setHasFixedSize(true)
-            layoutManager = viewManager
-            adapter = viewAdapter
-        }
+        val ft = fragmentManager!!.beginTransaction()
+        val nearby: Fragment = BarnFragment("Nearby")
+        ft.add(R.id.scroll_view_linear_layout, nearby, "nearby")
+        val similar: Fragment = BarnFragment("Similar to you:")
+        ft.add(R.id.scroll_view_linear_layout, similar, "similar")
+
+        ft.commit()
+
+
+        view.findViewById<ScrollView>(R.id.scroll_view_linear_layout)
+//        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view).apply {
+//            setHasFixedSize(true)
+//            layoutManager = viewManager
+//            adapter = viewAdapter
+//        }
 
         return view
     }

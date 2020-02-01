@@ -47,12 +47,12 @@ public class SiloLineChart extends SiloChart{
         x.setValueFormatter(new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
-                return value + " AM";
+                return value + "";
             }
 
             @Override
             public String getPointLabel(Entry entry) {
-                return entry.getX() + " AM";
+                return entry.getX() + "";
             }
         });
 

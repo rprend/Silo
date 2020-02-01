@@ -84,30 +84,46 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ListView graph_rc = view.findViewById(R.id.gragh_recycler);
 
-        List<Entry> entrie1 = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            entrie1.add(new Entry(i, i*i));
-        }
-        List<Entry> entrie2 = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            entrie2.add(new PieEntry(i, i*i));
-        }List<Entry> entrie3 = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            entrie3.add(new Entry(i, i));
-        }
         List<List<Entry>> entries = new ArrayList<>();
-        entries.add(entrie1);
-        entries.add(entrie2);
-        entries.add(entrie3);
         List<String> titles = new ArrayList<>();
-        titles.add("Example Line 1");
-        titles.add("Example Pie");
-        titles.add("Example Line 2");
         List<String> types = new ArrayList<>();
+
+        List<Entry> susEntry = Arrays.asList(new Entry(0.7f, 1));
+        List<Entry> envEntry = Arrays.asList(new Entry(0.9f, 1));
+
+        List<Entry> waterEntry = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            waterEntry.add(new Entry(i, (float) Math.sin(i/200)));
+        }
+        List<Entry> powerEntry = new ArrayList<>();
+        for (int i = 0; i < 1200; i++) {
+            powerEntry.add(new Entry(i, i*i));
+        }
+        List<Entry> tempEntry = new ArrayList<>();
+        for (int i = 0; i < 800; i++) {
+            tempEntry.add(new Entry(i, i*1.1f));
+        }
+
+        entries.add(susEntry);
+        titles.add("Sustainability Index");
         types.add("score");
+
+        entries.add(envEntry);
+        titles.add("Environmental Index");
+        types.add("score");
+
+        entries.add(waterEntry);
+        titles.add("Water Use");
         types.add("line");
-        types.add("pie");
+
+        entries.add(powerEntry);
+        titles.add("Power Use");
         types.add("line");
+
+        entries.add(tempEntry);
+        titles.add("Building Temperature");
+        types.add("line");
+
         ChartAdaptor adaptor = new ChartAdaptor(entries, titles, types, getContext());
         graph_rc.setDividerHeight(0);
         graph_rc.setAdapter(adaptor);

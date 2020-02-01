@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -106,6 +109,21 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
+
+//        mDataSet: List<String> = listOf("Example 1", "Example 2")
+        List<String> mDataSet = new ArrayList<String>();
+        mDataSet.add("Spring Layout");
+        mDataSet.add("Summer Layout");
+        mDataSet.add("Fall Layout");
+
+        RecyclerView.LayoutManager viewManager = new LinearLayoutManager(view.getContext());
+        RecyclerView.Adapter viewAdapter = new RecyclerAdapter(mDataSet);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(viewManager);
+        recyclerView.setAdapter(viewAdapter);
+
         return view;
     }
 

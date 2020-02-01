@@ -32,6 +32,8 @@ public class MainFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private RingView ringView;
+
     private OnFragmentInteractionListener mListener;
 
     public MainFragment() {
@@ -71,6 +73,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        ringView = view.findViewById(R.id.ring_view);
         return view;
     }
 

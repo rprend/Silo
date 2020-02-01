@@ -15,10 +15,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieEntry;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -79,15 +82,15 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        RecyclerView graph_rc = view.findViewById(R.id.gragh_recycler);
+        ListView graph_rc = view.findViewById(R.id.gragh_recycler);
 
         List<Entry> entrie1 = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             entrie1.add(new Entry(i, i*i));
         }
         List<Entry> entrie2 = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            entrie2.add(new Entry(i, i*i));
+        for (int i = 0; i < 10; i++) {
+            entrie2.add(new PieEntry(i, i*i));
         }List<Entry> entrie3 = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             entrie3.add(new Entry(i, i));
@@ -97,11 +100,17 @@ public class MainFragment extends Fragment {
         entries.add(entrie2);
         entries.add(entrie3);
         List<String> titles = new ArrayList<>();
-        titles.add("1");
-        titles.add("2");
-        titles.add("3");
-        graph_rc.setLayoutManager(new LinearLayoutManager(getContext()));
-        graph_rc.setAdapter(new ChartAdaptor(entries, titles));
+        titles.add("Example Line 1");
+        titles.add("Example Pie");
+        titles.add("Example Line 2");
+        List<String> types = new ArrayList<>();
+        types.add("score");
+        types.add("line");
+        types.add("pie");
+        types.add("line");
+        ChartAdaptor adaptor = new ChartAdaptor(entries, titles, types, getContext());
+        graph_rc.setDividerHeight(0);
+        graph_rc.setAdapter(adaptor);
 
         //charts -- mult lines //2560X1312
 

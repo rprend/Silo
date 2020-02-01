@@ -12,7 +12,7 @@
     <color name="red">#F71735</color>
     <color name="black">#170305</color>
 
-    <color name="graph_back">@color/background_light</color>
+    <color name="graph_back">@color/cardview_light_background</color>
     <color name="graph_label">@color/black</color>
     <color name="graph_line">@color/yellow</color>
 

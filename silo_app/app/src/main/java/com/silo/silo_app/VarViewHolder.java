@@ -5,6 +5,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.google.android.material.card.MaterialCardView;
@@ -24,16 +25,20 @@ public abstract class VarViewHolder extends RecyclerView.ViewHolder {
 
     public static class ChartViewHolder extends VarViewHolder {
 
-        private SiloLineChart siloChart;
-        private LineChart chart;
+        private SiloChart siloChart;
+        private View chart;
         private TextView titleView;
 
-        public ChartViewHolder(@NonNull View chartItem) {
+        public ChartViewHolder(@NonNull View chartItem, String type) {
             super(chartItem);
             this.titleView = chartItem.findViewById(R.id.chart_title);
             chart = itemView.findViewById(R.id.graph_container);
             chart.setVisibility(View.VISIBLE);
-            siloChart = new SiloLineChart( chart, chartItem.getContext());
+            switch (type) {
+                case "line" : siloChart = new SiloLineChart( (FrameLayout) chart, chartItem.getContext());
+                case "pie" : siloChart = new SiloPieChart( (FrameLayout) chart, chartItem.getContext());
+            }
+
         }
 
         public void newData(List<Entry> entries, String title) {
@@ -47,7 +52,7 @@ public abstract class VarViewHolder extends RecyclerView.ViewHolder {
     public static class SusScoreHolder extends VarViewHolder {
         private RingView ringView;
         private TextView titleView;
-        private LineChart chart;
+        private View chart;
         //TODO by teddy
         public SusScoreHolder(@NonNull View itemView) {
             super(itemView);

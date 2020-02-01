@@ -47,15 +47,14 @@ class ExploreFragment : Fragment() {
 
         val view: View = inflater.inflate(R.layout.fragment_explore, container, false)
 
-        val ft = fragmentManager!!.beginTransaction()
-        val nearby: Fragment = BarnFragment("Nearby")
-        ft.add(R.id.scroll_view_linear_layout, nearby, "nearby")
-        val similar: Fragment = BarnFragment("Similar to you:")
-        ft.add(R.id.scroll_view_linear_layout, similar, "similar")
-
-        ft.commit()
-
-
+//        val ft = fragmentManager!!.beginTransaction()
+//        val nearby: BarnFragment = BarnFragment("Nearby")
+//        ft.add(R.id.scroll_view_linear_layout, nearby, "nearby")
+//        nearby.addFragment(IndividualBarnFragment())
+//        val similar: Fragment = BarnFragment("Similar to you:")
+//        ft.add(R.id.scroll_view_linear_layout, similar, "similar")
+//
+//        ft.commit()
         view.findViewById<ScrollView>(R.id.scroll_view_linear_layout)
 //        recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view).apply {
 //            setHasFixedSize(true)

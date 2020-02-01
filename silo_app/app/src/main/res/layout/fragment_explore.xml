@@ -11,6 +11,7 @@
         android:id="@+id/scroll_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/toolbarHeight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,13 +19,14 @@
 
         <LinearLayout
             android:id="@+id/scroll_view_linear_layout"
+            android:background="@color/cardview_light_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-<!--            <fragment android:name="com.silo.silo_app.LoginFragment"-->
-<!--                android:id="@+id/tmp_fragment"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="400dp"/>-->
+            <include layout="@layout/fragment_nearby"/>
+            <include layout="@layout/fragment_highest_rated"/>
+            <include layout="@layout/fragment_most_viewed"/>
+
         </LinearLayout>
 
     </ScrollView>

@@ -78,7 +78,7 @@ class RingView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         val leftTopY = padding
 
         val rightBotX = width - padding
-        val rightBotY = height - padding
+        val rightBotY = height - padding - 100
 
         canvas.drawArc(leftTopX, leftTopY, rightBotX, rightBotY, 0f, 360f, false, backgroundRingPaint)
         canvas.drawArc(leftTopX, leftTopY, rightBotX, rightBotY, 130f, ecoVal * 360f, false, ringPaint)

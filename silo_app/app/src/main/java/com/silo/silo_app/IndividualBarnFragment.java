@@ -5,23 +5,21 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BarnFragment.OnFragmentInteractionListener} interface
+ * {@link IndividualBarnFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link BarnFragment#newInstance} factory method to
+ * Use the {@link IndividualBarnFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BarnFragment extends Fragment {
+public class IndividualBarnFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,20 +28,11 @@ public class BarnFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String title = null;
 
     private OnFragmentInteractionListener mListener;
 
-    public BarnFragment() {
+    public IndividualBarnFragment() {
         // Required empty public constructor
-    }
-
-    public BarnFragment(String title) {
-        this.title = title;
-    }
-
-    public void addFragment(Fragment frag) {
-        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
     }
 
     /**
@@ -52,11 +41,11 @@ public class BarnFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BarnFragment.
+     * @return A new instance of fragment IndividualBarnFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BarnFragment newInstance(String param1, String param2) {
-        BarnFragment fragment = new BarnFragment();
+    public static IndividualBarnFragment newInstance(String param1, String param2) {
+        IndividualBarnFragment fragment = new IndividualBarnFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -77,11 +66,7 @@ public class BarnFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_nearby, container, false);
-        if (title != null) {
-            ((TextView) view.findViewById(R.id.title)).setText(title);
-        }
-        return view;
+        return inflater.inflate(R.layout.fragment_individual_barn, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BarnFragment">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Most Viewed"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <LinearLayout
+            android:id="@+id/horizontal_linear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="300dp"
+                android:layout_height="@dimen/small_card_height"
+                app:cardCornerRadius="10dp"
+                android:layout_marginTop="@dimen/padding_default"
+                android:layout_marginLeft="@dimen/padding_default"
+                android:layout_marginRight="@dimen/padding_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image_bigcard"
+                        android:transitionName="image"
+                        android:layout_width="@dimen/small_card_height"
+                        android:layout_height="@dimen/small_card_height"
+                        android:layout_alignParentStart="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/materialdesign_image" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:transitionName="title"
+                        android:text="Ryan's Farm"
+                        android:paddingLeft="@dimen/padding_default"
+                        android:id="@+id/card_title"
+                        android:layout_toRightOf="@+id/image_bigcard"
+                        android:textSize="@dimen/subheader_size"/>
+
+                    <TextView
+                        android:id="@+id/eco_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/padding_big"
+                        android:paddingRight="@dimen/padding_big"
+                        android:layout_below="@id/card_title"
+                        android:layout_toRightOf="@id/image_bigcard"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="italic"
+                        android:text="Ecorating: 210 "/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="300dp"
+                android:layout_height="@dimen/small_card_height"
+                app:cardCornerRadius="10dp"
+                android:layout_marginTop="@dimen/padding_default"
+                android:layout_marginLeft="@dimen/padding_default"
+                android:layout_marginRight="@dimen/padding_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image_bigcard2"
+                        android:transitionName="image"
+                        android:layout_width="@dimen/small_card_height"
+                        android:layout_height="@dimen/small_card_height"
+                        android:layout_alignParentStart="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/materialdesign_image" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:transitionName="title"
+                        android:text="Jason's Farm"
+                        android:paddingLeft="@dimen/padding_default"
+                        android:id="@+id/card_title2"
+                        android:layout_toRightOf="@+id/image_bigcard2"
+                        android:textSize="@dimen/subheader_size"/>
+
+                    <TextView
+                        android:id="@+id/eco_score2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/padding_big"
+                        android:paddingRight="@dimen/padding_big"
+                        android:layout_below="@id/card_title2"
+                        android:layout_toRightOf="@id/image_bigcard2"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="italic"
+                        android:text="Ecorating: 720 "/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="300dp"
+                android:layout_height="@dimen/small_card_height"
+                app:cardCornerRadius="10dp"
+                android:layout_marginTop="@dimen/padding_default"
+                android:layout_marginLeft="@dimen/padding_default"
+                android:layout_marginRight="@dimen/padding_default">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image_bigcard3"
+                        android:transitionName="image"
+                        android:layout_width="@dimen/small_card_height"
+                        android:layout_height="@dimen/small_card_height"
+                        android:layout_alignParentStart="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/materialdesign_image" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:transitionName="title"
+                        android:text="Herb's Farm"
+                        android:paddingLeft="@dimen/padding_default"
+                        android:id="@+id/card_title3"
+                        android:layout_toRightOf="@+id/image_bigcard3"
+                        android:textSize="@dimen/subheader_size"/>
+
+                    <TextView
+                        android:id="@+id/eco_score3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/padding_big"
+                        android:paddingRight="@dimen/padding_big"
+                        android:layout_below="@id/card_title3"
+                        android:layout_toRightOf="@id/image_bigcard3"
+                        android:textSize="@dimen/body_size"
+                        android:textStyle="italic"
+                        android:text="Ecorating: 420 "/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </HorizontalScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

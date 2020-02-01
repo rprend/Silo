@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="@dimen/padding_default"
+    android:layout_marginBottom="0dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_bigcard"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentStart="true"
+            android:scaleType="center"
+            android:padding="@dimen/padding_default"
+            android:src="@drawable/materialdesign_image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_big"
+            android:text="John's farm - 980 ecorating"
+            android:id="@+id/big_card_text_title"
+            android:layout_below="@+id/image_bigcard"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="40dp"
+            android:paddingRight="@dimen/padding_big"
+            android:paddingBottom="@dimen/padding_default"
+            android:id="@+id/big_card_body"
+            android:layout_below="@id/big_card_text_title"
+            android:textSize="@dimen/body_size"
+            android:text="Urbana, Illinois"/>
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

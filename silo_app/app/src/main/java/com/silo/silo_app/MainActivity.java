@@ -5,8 +5,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import androidx.fragment.app.DialogFragment;
+
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -23,7 +27,9 @@ import android.widget.Toast;
 import com.evolve.backdroplibrary.BackdropContainer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.datepicker.MaterialDatePicker;
+
 import com.google.android.material.datepicker.MaterialStyledDatePickerDialog;
+
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -81,23 +87,13 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //TODO
-        if (id == R.id.calendar) {
-            MaterialDatePicker datePicker = new MaterialDatePicker();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
-            if (prev != null) {
-                ft.remove(prev);
-            }
-            ft.addToBackStack(null);
-            datePicker.show(ft, "dialog");
-        }
-
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.appbar_icons) {
-//            Toast.makeText(MainActivity.this, "Action clicked", Toast.LENGTH_LONG).show();
-//            return true;
-//        }
+        if (id == R.id.calendar) {
+            DialogFragment newFragment = new DatePickerFragment();
+            newFragment.show(getSupportFragmentManager(), "datePicker");
+
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

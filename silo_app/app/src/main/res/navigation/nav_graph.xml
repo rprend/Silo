@@ -5,6 +5,7 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
+
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.silo.silo_app.MainFragment"

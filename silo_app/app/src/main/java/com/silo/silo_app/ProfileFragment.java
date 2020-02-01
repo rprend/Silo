@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -82,10 +83,26 @@ public class ProfileFragment extends Fragment {
 
         SiloLineChart siloChart = new SiloLineChart((MaterialCardView) view.findViewById(R.id.graph_profile), view.getContext());
 
+        List<Entry> entrie = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            entrie.add(new Entry(i, i*1.4f));
+        }
         List<Entry> entrie1 = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            entrie1.add(new Entry(i, i*i));
+            entrie1.add(entrie.get(i));
         }
+        List<Entry> entrie2 = new ArrayList<>();
+        for (int i = 0; i < entrie.size()/12; i++) {
+            entrie2.add(entrie.get(i));
+        }
+        List<Entry> entrie3 = new ArrayList<>();
+        for (int i = 0; i < entrie.size()/52; i++) {
+            entrie3.add(entrie.get(i));
+        }
+
+
+
+
 
         try {
             siloChart.newData(entrie1, "week");
@@ -96,6 +113,19 @@ public class ProfileFragment extends Fragment {
         tb.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getText().toString()) {
+                    case "WEEK":
+                        siloChart.newData(entrie3, "week");
+                        break;
+                    case "MONTH":
+                        siloChart.newData(entrie2, "month");
+                        break;
+                    case "YEAR":
+                        siloChart.newData(entrie1, "year");
+                        break;
+                }
+                //siloChart.chart.invalidate();
+//                siloChart.chart.
 
             }
 

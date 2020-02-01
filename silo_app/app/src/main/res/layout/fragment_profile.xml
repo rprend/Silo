@@ -5,6 +5,8 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:layout_marginBottom="@dimen/toolbarHeight"
     tools:context=".ProfileFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -34,16 +36,19 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.tabs.TabItem
+                    android:id="@+id/week"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="WEEK" />
 
                 <com.google.android.material.tabs.TabItem
+                    android:id="@+id/month"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="MONTH" />
 
                 <com.google.android.material.tabs.TabItem
+                    android:id="@+id/year"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="YEAR" />

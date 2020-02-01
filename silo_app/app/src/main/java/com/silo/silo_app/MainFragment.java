@@ -126,6 +126,7 @@ public class MainFragment extends Fragment {
         types.add("line");
 
         adaptor = new ChartAdaptor(entries, titles, types, getContext());
+        adaptor.makeFromWeb();
         graph_rc.setDividerHeight(0);
         graph_rc.setAdapter(adaptor);
 

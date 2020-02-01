@@ -25,6 +25,8 @@ import com.github.mikephil.charting.data.PieEntry;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,89 +36,86 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ChartAdaptor extends BaseAdapter {
 
+    public static String loadJSONFromAsset(Context context) {
+        String json = null;
+        try {
+            InputStream is = context.getAssets().open("layout_info.json");
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            json = new String(buffer, "UTF-8");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+
+    }
 
     public void makeFromWeb() {
-        String url = "";
 
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(context);
+        try {
+            JSONObject lay = new JSONObject(loadJSONFromAsset(context));
+            float sus_ind = (float) lay.getDouble("sustainability");
+            float eff_ind = (float) lay.getDouble("efficiency");
+            JSONObject vars = lay.getJSONObject("variables");
+            JSONArray water = vars.getJSONArray("water");
+            JSONArray power = vars.getJSONArray("water");
+            JSONArray temp = vars.getJSONArray("temperature");
 
-        ChartAdaptor car = this;
-        // Request a string response from the provided URL.
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            List<Entry> susEntry = Arrays.asList(new Entry(sus_ind, 1));
+            List<Entry> envEntry = Arrays.asList(new Entry(eff_ind, 1));
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
+            List<Entry> waterEntry = new ArrayList<>();
+            for (int i = 0; i < water.length(); i++) {
+                waterEntry.add(new Entry(i, water.getInt(i)));
+            }
+            List<Entry> powerEntry = new ArrayList<>();
+            for (int i = 0; i < power.length(); i++) {
+                waterEntry.add(new Entry(i, power.getInt(i)));
+            }
+            List<Entry> tempEntry = new ArrayList<>();
+            for (int i = 0; i < temp.length(); i++) {
+                waterEntry.add(new Entry(i, power.getInt(i)));
+            }
 
+            entries.clear();
+            titles.clear();
+            types.clear();
 
-                            JSONObject lay = response.getJSONObject("layout1");
-                            float sus_ind = (float) lay.getDouble("sustainability");
-                            float eff_ind = (float) lay.getDouble("efficiency");
-                            JSONObject vars = lay.getJSONObject("variables");
-                            JSONArray water = vars.getJSONArray("water_consumption");
-                            JSONArray power = vars.getJSONArray("power_consumption");
-                            JSONArray temp = vars.getJSONArray("temperature");
+            entries.add(susEntry);
+            titles.add("Sustainability Index");
+            types.add("score");
 
-                            List<Entry> susEntry = Arrays.asList(new Entry(sus_ind, 1));
-                            List<Entry> envEntry = Arrays.asList(new Entry(eff_ind, 1));
+            entries.add(envEntry);
+            titles.add("Environmental Index");
+            types.add("score");
 
-                            List<Entry> waterEntry = new ArrayList<>();
-                            for (int i = 0; i < water.length(); i++) {
-                                waterEntry.add(new Entry(i, water.getInt(i)));
-                            }
-                            List<Entry> powerEntry = new ArrayList<>();
-                            for (int i = 0; i < power.length(); i++) {
-                                waterEntry.add(new Entry(i, power.getInt(i)));
-                            }
-                            List<Entry> tempEntry = new ArrayList<>();
-                            for (int i = 0; i < temp.length(); i++) {
-                                waterEntry.add(new Entry(i, power.getInt(i)));
-                            }
+            entries.add(waterEntry);
+            titles.add("Water Use");
+            types.add("line");
 
-                            entries.clear();
-                            titles.clear();
-                            types.clear();
+            entries.add(powerEntry);
+            titles.add("Power Use");
+            types.add("line");
 
-                            entries.add(susEntry);
-                            titles.add("Sustainability Index");
-                            types.add("score");
+            entries.add(tempEntry);
+            titles.add("Building Temperature");
+            types.add("line");
 
-                            entries.add(envEntry);
-                            titles.add("Environmental Index");
-                            types.add("score");
+            this.notifyDataSetChanged();
 
-                            entries.add(waterEntry);
-                            titles.add("Water Use");
-                            types.add("line");
-
-                            entries.add(powerEntry);
-                            titles.add("Power Use");
-                            types.add("line");
-
-                            entries.add(tempEntry);
-                            titles.add("Building Temperature");
-                            types.add("line");
-
-                            car.notifyDataSetChanged();
-                        } catch (Exception e) {
-                            car.notifyDataSetInvalidated();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-
-                    }
-                });
-
-
-// Add the request to the RequestQueue.
-        queue.add(jsonObjectRequest);
-
+        } catch (Exception e) {
+            this.notifyDataSetInvalidated();
+        }
 
 
     }
@@ -134,6 +133,7 @@ public class ChartAdaptor extends BaseAdapter {
         this.context = context;
         inflate = LayoutInflater.from(context);
     }
+
     public ChartAdaptor(Context context) {
         this.context = context;
         inflate = LayoutInflater.from(context);

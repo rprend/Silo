@@ -26,7 +26,7 @@ import java.util.List;
 
 public class SiloLineChart extends SiloChart{
     //private final ViewGroup root;
-
+    LineData data;
 
     SiloLineChart(ViewGroup root, Context context) {
         super(context);
@@ -94,7 +94,7 @@ public class SiloLineChart extends SiloChart{
         dataSet.setFillColor(context.getColor(R.color.green));
         dataSet.setDrawFilled(true);
         dataSet.setCubicIntensity(1);
-        LineData data = new LineData(dataSet);
+        data = new LineData(dataSet);
 
         y.setAxisMinimum(data.getYMin());
 

@@ -25,7 +25,11 @@
         android:id="@+id/exploreFragment"
         android:name="com.silo.silo_app.ExploreFragment"
         android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" />
+        tools:layout="@layout/fragment_explore" >
+        <action
+            android:id="@+id/action_exploreFragment_to_otherProfileFragment2"
+            app:destination="@id/otherProfileFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.silo.silo_app.LoginFragment"
@@ -37,4 +41,9 @@
             app:enterAnim="@anim/fragment_open_enter"
             app:exitAnim="@anim/fragment_open_exit" />
     </fragment>
+    <fragment
+        android:id="@+id/otherProfileFragment2"
+        android:name="com.silo.silo_app.OtherProfileFragment"
+        android:label="fragment_profile_other"
+        tools:layout="@layout/fragment_profile_other" />
 </navigation>

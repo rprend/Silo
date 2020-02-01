@@ -22,7 +22,9 @@
             android:background="@color/cardview_light_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="click"
             android:orientation="vertical" >
+
             <include layout="@layout/fragment_nearby"/>
             <include layout="@layout/fragment_highest_rated"/>
             <include layout="@layout/fragment_most_viewed"/>

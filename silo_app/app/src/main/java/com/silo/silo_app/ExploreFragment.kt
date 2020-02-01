@@ -79,6 +79,10 @@ class ExploreFragment : Fragment() {
 //        }
     }
 
+
+    fun click(view: View) {
+        Fragment
+    }
     override fun onDetach() {
         super.onDetach()
         listener = null

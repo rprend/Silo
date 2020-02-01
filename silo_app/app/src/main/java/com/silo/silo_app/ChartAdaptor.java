@@ -14,24 +14,10 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ChartAdaptor extends RecyclerView.Adapter<ChartAdaptor.ChartViewHolder> {
-
-    public static class ChartViewHolder extends RecyclerView.ViewHolder {
-
-        private SiloLineChart chart;
-        private TextView titleView;
-        public ChartViewHolder(@NonNull View chartItem) {
-            super(chartItem);
-            this.titleView = chartItem.findViewById(R.id.chart_title);
-            chart = new SiloLineChart( (LinearLayout) chartItem, chartItem.getContext());
-        }
-        public void newData(List<Entry> entries, String title ) {
-            chart.newData(entries, title);
-            titleView.setText(title);
-        }
+public class ChartAdaptor extends RecyclerView.Adapter<VarViewHolder> {
 
 
-    }
+
     List<List<Entry>> entries;
     List<String> titles;
 
@@ -43,15 +29,24 @@ public class ChartAdaptor extends RecyclerView.Adapter<ChartAdaptor.ChartViewHol
 
     @NonNull
     @Override
-    public ChartAdaptor.ChartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public VarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View chartItem = LayoutInflater.from(parent.getContext()).inflate(R.layout.chart_view_item, parent, false);
-        ChartAdaptor.ChartViewHolder vh = new ChartViewHolder(chartItem);
-        return vh;
+        switch (viewType) {
+
+            case 0: return new VarViewHolder.SusScoreHolder(chartItem);
+            default: return new VarViewHolder.ChartViewHolder(chartItem);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ChartAdaptor.ChartViewHolder holder, int position) {
-        holder.newData(entries.get(position), titles.get(0) );
+    public void onBindViewHolder(@NonNull VarViewHolder holder, int position) {
+        holder.newData(entries.get(position), titles.get(position) );
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        position = Math.max(position, 1);
+        return position;
     }
 
     @Override

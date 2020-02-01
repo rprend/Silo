@@ -1,5 +1,6 @@
 package com.silo.silo_app
 
+import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
@@ -9,9 +10,18 @@ import android.view.View
 class RingView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : View(context, attrs, defStyleAttr) {
 
+    val redColor = resources.getColor(R.color.red)
+    val greenColor = Color.GREEN
+
     var ecoVal: Float = 0f
-    val backgroundPaint: Paint = Paint().apply {
-        color = Color.BLACK
+    val ringPaint: Paint = Paint().apply {
+        color = resources.getColor(R.color.red)
+        strokeWidth = 40f
+        style = Paint.Style.STROKE
+        strokeCap = Paint.Cap.ROUND
+    }
+
+    val backgroundRingPaint: Paint = Paint().apply {
         strokeWidth = 40f
         style = Paint.Style.STROKE
         strokeCap = Paint.Cap.ROUND
@@ -22,26 +32,32 @@ class RingView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         textSize = 250f
     }
 
-    var animator: ValueAnimator = ValueAnimator.ofFloat(0f, 270f).apply {
-        duration = 1000
-        addUpdateListener {
-            ecoVal = it.animatedValue as Float
-            invalidate()
-        }
-    }
+    var animator: ValueAnimator = ValueAnimator()
+    var colorAnimator: ValueAnimator = ValueAnimator()
 
     fun setEcoValue(newEcoVal: Float) {
         if (animator.isRunning) {
             animator.cancel()
+            colorAnimator.cancel()
+        }
+
+        val duration: Long = 1000
+        val endColor: Object = ArgbEvaluator().evaluate(newEcoVal, redColor, greenColor) as Object
+        colorAnimator = ValueAnimator.ofObject(ArgbEvaluator(), redColor, endColor).apply {
+            this.duration = duration
+            addUpdateListener {
+                ringPaint.color = it.animatedValue as Int
+            }
         }
 
         animator = ValueAnimator.ofFloat(0f, newEcoVal).apply {
-            duration = 1000
+            this.duration = duration
             addUpdateListener {
                 ecoVal = it.animatedValue as Float
                 invalidate()
             }
         }
+        colorAnimator.start()
         animator.start()
     }
 
@@ -64,6 +80,7 @@ class RingView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         val rightBotX = width - padding
         val rightBotY = height - padding
 
-        canvas.drawArc(leftTopX, leftTopY, rightBotX, rightBotY, 130f, ecoVal * 360f, false, backgroundPaint)
+        canvas.drawArc(leftTopX, leftTopY, rightBotX, rightBotY, 0f, 360f, false, backgroundRingPaint)
+        canvas.drawArc(leftTopX, leftTopY, rightBotX, rightBotY, 130f, ecoVal * 360f, false, ringPaint)
     }
 }

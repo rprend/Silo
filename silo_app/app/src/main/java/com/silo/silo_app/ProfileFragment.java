@@ -12,6 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.github.mikephil.charting.data.Entry;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,6 +76,36 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        SiloLineChart siloChart = new SiloLineChart((MaterialCardView) view.findViewById(R.id.graph_profile), view.getContext());
+
+        List<Entry> entrie1 = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            entrie1.add(new Entry(i, i*i));
+        }
+
+        try {
+            siloChart.newData(entrie1, "week");
+        } catch (Exception e){
+        }
+
+        TabLayout tb = view.findViewById(R.id.tabs);
+        tb.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         return view;
     }
 

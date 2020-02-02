@@ -7,9 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.ScrollView
+import android.widget.Toast
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +53,10 @@ class ExploreFragment : Fragment() {
 
         val view: View = inflater.inflate(R.layout.fragment_explore, container, false)
 
+        view.findViewById<MaterialCardView>(R.id.card_click).setOnClickListener{
+            findNavController().navigate(R.id.action_exploreFragment_to_otherProfileFragment2)
+        }
+
 //        val ft = fragmentManager!!.beginTransaction()
 //        val nearby: BarnFragment = BarnFragment("Nearby")
 //        ft.add(R.id.scroll_view_linear_layout, nearby, "nearby")
@@ -80,9 +90,6 @@ class ExploreFragment : Fragment() {
     }
 
 
-    fun click(view: View) {
-        Fragment
-    }
     override fun onDetach() {
         super.onDetach()
         listener = null

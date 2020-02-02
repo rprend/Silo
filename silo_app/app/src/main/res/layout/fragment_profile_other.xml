@@ -5,7 +5,6 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:layout_marginBottom="@dimen/toolbarHeight"
     tools:context=".OtherProfileFragment">
 
@@ -24,7 +23,7 @@
 
             <include
                 android:id="@+id/include"
-                layout="@layout/profile_header"
+                layout="@layout/profile_header_other"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="32dp" />
 
